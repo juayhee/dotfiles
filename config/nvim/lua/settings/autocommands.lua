@@ -1,20 +1,10 @@
-local diff = vim.api.nvim_create_augroup('diff', {
+vim.api.nvim_create_augroup('help', {
     clear = true,
 })
 
-vim.api.nvim_create_autocmd({ 'BufNew', 'BufEnter' }, {
-    callback = function()
-        if vim.api.nvim_get_option_value('diff', {}) then
-            vim.keymap.set('n', 'dj', function()
-                vim.cmd('diffget')
-            end, { desc = 'diffget', buffer = 0 })
-
-            vim.keymap.set('n', 'df', function()
-                vim.cmd('diffput')
-            end, { desc = 'diffput', buffer = 0 })
-        else
-
-        end
-    end,
-    group = 'diff'
+-- Open help / fugitive splits vertically to the right instead of horizontally
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+    pattern = { "help" },
+    command = "wincmd L",
+    group = 'help'
 })

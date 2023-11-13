@@ -1,11 +1,16 @@
 #!/bin/bash
 
-set -euo pipefail
+echo "> update"
+sudo apt-get update -y > /dev/null 2>&1 || apt-get update -y > /dev/null
 
-sudo apt-get update -y || apt-get update -y
-sudo apt-get upgrade -y || apt-get update -y
-sudo apt-get install -y || apt-get install -y \
+echo "> upgrade"
+sudo apt-get upgrade -y > /dev/null 2>&1 || apt-get update -y > /dev/null 
+
+echo "> install"
+sudo apt-get install -y > /dev/null 2>&1 || apt-get install -y > /dev/null \
     build-essential \
     git \
     curl \
-    ripgrep
+    ripgrep \
+    unzip \
+    fontconfig
