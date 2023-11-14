@@ -9,6 +9,11 @@ return {
         'nvim-telescope/telescope.nvim' -- Telescope LSP keymaps must be registered first
     },
     config = function()
+        -- Load installed servers from Mason
+        require('mason').setup();
+        require('mason-lspconfig').setup({
+            automatic_installation = true
+        })
         local lspconfig = require('lspconfig')
         local lsp_defaults = lspconfig.util.default_config
         local builtin = require('telescope.builtin')
@@ -20,15 +25,20 @@ return {
             require('cmp_nvim_lsp').default_capabilities()
         )
 
-        -- Load installed servers from Mason
-        require('mason').setup();
-        require('mason-lspconfig').setup({
-            automatic_installation = true
+        lspconfig['lua_ls'].setup {}
+        lspconfig['clangd'].setup {}
+        lspconfig['rust_analyzer'].setup {}
+        lspconfig['pylsp'].setup({
+            settings = {
+                pylsp = {
+                    plugins = {
+                        jedi = {
+                            environment = '/usr/bin/python3.10',
+                        }
+                    }
+                }
+            }
         })
-        lspconfig.lua_ls.setup{}
-        lspconfig.clangd.setup{}
-        lspconfig.rust_analyzer.setup{}
-        lspconfig.pylsp.setup{}
 
         -- LSP related keymaps
         vim.api.nvim_create_autocmd('LspAttach', {
