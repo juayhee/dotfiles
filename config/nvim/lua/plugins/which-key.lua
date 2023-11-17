@@ -36,6 +36,9 @@ return {
                 s = {
                     name = 'Spectre'
                 },
+                t = {
+                    name = 'Tabs'
+                }
             },
             { mode = 'n' }
         })

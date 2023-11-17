@@ -35,3 +35,8 @@ vim.diagnostic.config({ virtual_text = false })
 -- Remove autocommenting
 vim.cmd('autocmd BufEnter * set formatoptions-=cro')
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
+
+-- Diffs
+-- vertical: Always open diffs in vertical splits
+-- foldcolumn: Do not fold diff buffers
+vim.opt.diffopt:append { 'vertical', 'foldcolumn:0' }

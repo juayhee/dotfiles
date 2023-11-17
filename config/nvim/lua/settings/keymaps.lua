@@ -23,8 +23,14 @@ vim.keymap.set('n', '<leader>q', '<cmd>copen<cr>', { desc = 'Open quickfix list'
 
 -- Diagnostics
 vim.keymap.set('n', '<leader>go', vim.diagnostic.open_float,
-    { desc = 'Open diagnostic in floating window' })
+              { desc = 'Open diagnostic in floating window' })
 vim.keymap.set('n', '<leader>gj', vim.diagnostic.goto_next, { desc = 'Next diagnostic' })
 vim.keymap.set('n', '<leader>gk', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic' })
 
--- Git
+-- Tabs
+vim.keymap.set('n', '<leader>tn', '<cmd>tabnew<cr>',
+              { desc = 'Open new tab' })
+vim.keymap.set('n', '<leader>tx', '<cmd>tabc<cr>',
+              { desc = 'Close current tab' })
+vim.keymap.set('n', '<leader>te', '<cmd>tabedit %<cr>',
+              { desc = 'Open current buffer in new tab' })
