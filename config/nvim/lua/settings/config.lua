@@ -37,6 +37,5 @@ vim.cmd('autocmd BufEnter * set formatoptions-=cro')
 vim.cmd('autocmd BufEnter * setlocal formatoptions-=cro')
 
 -- Diffs
--- vertical: Always open diffs in vertical splits
--- foldcolumn: Do not fold diff buffers
-vim.opt.diffopt:append { 'vertical', 'foldcolumn:0' }
+-- context: force vim to show more stuff so it doesn't fold identical sections
+vim.opt.diffopt:append { 'context:100000' }
